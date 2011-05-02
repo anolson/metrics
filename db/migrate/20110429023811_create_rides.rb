@@ -1,11 +1,11 @@
 class CreateRides < ActiveRecord::Migration
   def self.up
     create_table :rides do |t|
-      t.string :name
-      t.string :strava_url
-      t.float :normalized_power
-      t.float :training_stress_score
-      t.float :intensity_factor
+      t.string  :name
+      t.string  :strava_url
+      t.float   :normalized_power,      :default => 0.0
+      t.float   :training_stress_score, :default => 0.0
+      t.float   :intensity_factor,      :default => 0.0
       t.integer :person_id
       t.timestamps
     end
