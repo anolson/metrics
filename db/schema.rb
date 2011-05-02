@@ -22,9 +22,9 @@ ActiveRecord::Schema.define(:version => 20110429023832) do
   create_table "rides", :force => true do |t|
     t.string   "name"
     t.string   "strava_url"
-    t.float    "normalized_power"
-    t.float    "training_stress_score"
-    t.float    "intensity_factor"
+    t.float    "normalized_power",      :default => 0.0
+    t.float    "training_stress_score", :default => 0.0
+    t.float    "intensity_factor",      :default => 0.0
     t.integer  "person_id"
     t.datetime "created_at"
     t.datetime "updated_at"
