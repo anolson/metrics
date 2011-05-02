@@ -4,8 +4,11 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-#  column: value
+ride_with_nil_metrics:
+  id: 1
+  
+ride_with_metrics:
+  id: 2
+  normalized_power: 234.0
+  training_stress_score: 90.3
+  intensity_factor: 0.8
