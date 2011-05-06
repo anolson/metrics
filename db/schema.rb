@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20110429023832) do
 
   create_table "rides", :force => true do |t|
     t.string   "name"
+    t.datetime "date"
     t.integer  "strava_ride_id"
     t.float    "normalized_power",      :default => 0.0
     t.float    "training_stress_score", :default => 0.0

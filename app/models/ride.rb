@@ -20,7 +20,7 @@ class Ride < ActiveRecord::Base
   end
   
   def sync(threshold_power = 0)
-    @watts = fetch_watts_from_strava
+    fetch_ride
     calculate_metrics(threshold_power)
   end
   
@@ -55,17 +55,30 @@ class Ride < ActiveRecord::Base
       write_attribute(:intensity_factor, intensity_factor)
     end
   
-    def fetch_watts_from_strava
-      streams = fetch_ride_streams_from_strava
+    def fetch_ride
+      fetch_ride_summary
+      fetch_ride_streams  
+    end
+    
+    def fetch_ride_summary
+      ride = strava_api.ride_show(self.strava_ride_id.to_i)
+      
+      write_attribute(:name, ride[:name])
+      write_attribute(:date, ride[:start_date_local])
+    end
+    
+    def fetch_ride_streams
+      streams = strava_api.ride_streams(self.strava_ride_id.to_i)
       
       unless(streams.watts.empty?)
-        streams.watts.collect { |item| item.nil? && 0 || item }
+        @watts = streams.watts.collect { |item| item.nil? && 0 || item }
       end
     end
     
-    def fetch_ride_streams_from_strava
-      strava = StravaApi::Base.new
-      strava.ride_streams(self.strava_ride_id.to_i)
+    def strava_api
+      @strava_api ||= StravaApi::Base.new
     end
+    
+
   
 end
