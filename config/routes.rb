@@ -1,7 +1,9 @@
 Metrics::Application.routes.draw do
-  resources :people do
-    resource :rides
-  end
+  # resources :people do
+  #   resource :rides
+  # end
+  
+  resources :rides, :only => :show
   
   # The priority is based upon order of creation:
   # first created -> highest priority.

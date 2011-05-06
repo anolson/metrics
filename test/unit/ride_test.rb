@@ -39,8 +39,9 @@ class RideTest < ActiveSupport::TestCase
   end
 
   test "syncing a ride from strava" do 
-    ride = Ride.new
-    ride.sync(486125, 320)
+    # ride = Ride.new :strava_ride_id => 486125
+    # ride.sync(320)
+    ride = Ride.find_by_strava_ride_id(486125)
     assert_equal 288.46, ride.normalized_power.round(2)
     assert_equal 148.68, ride.training_stress_score.round(2)
     assert_equal 0.9, ride.intensity_factor.round(1)

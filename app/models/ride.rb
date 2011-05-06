@@ -1,15 +1,26 @@
 class Ride < ActiveRecord::Base
   
   attr_accessor :watts
-  # attr_writer :watts
   
   def initialize(options = {})
     super options
     @watts = []
   end
   
-  def sync(strava_ride_id, threshold_power = 0)
-    @watts = fetch_watts_from_strava(strava_ride_id)
+  def self.find_by_strava_ride_id(strava_ride_id, sync = true)
+    ride = super(strava_ride_id)
+    
+    if(ride.nil? && sync)
+      ride = Ride.new :strava_ride_id => strava_ride_id
+      ride.sync(320)
+      ride.save
+    end
+    
+    return ride
+  end
+  
+  def sync(threshold_power = 0)
+    @watts = fetch_watts_from_strava
     calculate_metrics(threshold_power)
   end
   
@@ -44,17 +55,17 @@ class Ride < ActiveRecord::Base
       write_attribute(:intensity_factor, intensity_factor)
     end
   
-    def fetch_watts_from_strava(strava_ride_id)
-      streams = fetch_ride_streams_from_strava(strava_ride_id)
-
+    def fetch_watts_from_strava
+      streams = fetch_ride_streams_from_strava
+      
       unless(streams.watts.empty?)
         streams.watts.collect { |item| item.nil? && 0 || item }
       end
     end
     
-    def fetch_ride_streams_from_strava(strava_ride_id)
+    def fetch_ride_streams_from_strava
       strava = StravaApi::Base.new
-      strava.ride_streams(strava_ride_id)
+      strava.ride_streams(self.strava_ride_id.to_i)
     end
   
 end

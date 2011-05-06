@@ -1,0 +1,4 @@
+<div id="<%= metric %>" class="metric light_grey">
+  <span><%= @ride.send(metric).round(2) %></span>
+  <label for="<%= metric %>"><%= metric.to_s.split("_").each{ |s| s.capitalize! }.join(" ") %></label>
+</div>

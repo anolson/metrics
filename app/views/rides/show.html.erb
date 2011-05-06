@@ -1,0 +1,11 @@
+
+<div id="ride">
+  <div id="title" class="dark_grey">
+    <h3>WednesdayWorlds</h3>
+    <div id="date" class="left">5/04/2011</div>
+    <%= link_to "View on Strava", "http://app.strava.com/rides/#{@ride.strava_ride_id}", :class => 'right' %>
+    <a href="strava" class="right"></a>
+    <div class="clear"></div>
+  </div>
+  <%= render :partial => 'metrics' %>
+</div>
