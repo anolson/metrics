@@ -6,7 +6,7 @@ gem 'rails', '3.0.7'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'sqlite3'
-gem 'strava-api', :git => 'git://github.com/anolson/strava-api.git', :branch => 'add_ride_streams'
+gem 'strava-api', :git => 'git://github.com/anolson/strava-api.git'
 gem 'joule'
 
 # Use unicorn as the web server

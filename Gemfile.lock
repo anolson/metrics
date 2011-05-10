@@ -1,7 +1,6 @@
 GIT
   remote: git://github.com/anolson/strava-api.git
-  revision: 6f065d581748850795fd3fabf0759e3c46c67a09
-  branch: add_ride_streams
+  revision: 4a1a05da19172eab3ed3df0ac8546f032f416a30
   specs:
     strava-api (0.13.0)
       httparty (~> 0.6.1)
