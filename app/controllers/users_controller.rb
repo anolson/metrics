@@ -7,9 +7,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
 
-    @user.authenticate!
-    
     if @user.save
+      session[:user] = @user.id
       redirect_to(@user)
     else
       render :action => "new"
