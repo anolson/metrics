@@ -10,6 +10,10 @@ class User < ActiveRecord::Base
     self.strava_api_token = strava_user.token
   end
   
+  def strava_rides
+    strava_api.rides(:athlete_id => self.strava_athlete_id)
+  end
+  
   def strava_api
     @strava_api ||= StravaApi::Base.new
   end
