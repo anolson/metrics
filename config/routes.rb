@@ -1,9 +1,10 @@
 Metrics::Application.routes.draw do
-  # resources :people do
-  #   resource :rides
-  # end
-  
   resources :rides, :only => :show
+  resources :users, :only => [:new, :create, :show]
+    
+  match "get_started" => 'users#new'
+
+  match '/:username' => 'users#show'
   root :to => "site#index"
   
   
