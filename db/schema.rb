@@ -12,13 +12,6 @@
 
 ActiveRecord::Schema.define(:version => 20110429023832) do
 
-  create_table "people", :force => true do |t|
-    t.string   "strava_user_id"
-    t.integer  "threshold_power"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "rides", :force => true do |t|
     t.string   "name"
     t.datetime "date"
@@ -27,6 +20,15 @@ ActiveRecord::Schema.define(:version => 20110429023832) do
     t.float    "training_stress_score", :default => 0.0
     t.float    "intensity_factor",      :default => 0.0
     t.integer  "person_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", :force => true do |t|
+    t.string   "strava_athlete_id"
+    t.string   "strava_api_token"
+    t.string   "username"
+    t.integer  "threshold_power"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

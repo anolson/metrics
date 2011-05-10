@@ -1,0 +1,14 @@
+<div id="user" class="dark_grey">
+  <%= form_for @user do |f| %>
+    <%= f.label :email %>
+    <%= f.text_field :email %><br />
+
+    <%= f.label :password %>
+    <%= f.password_field :password %><br />
+
+    <%= f.label :threshold_power %>
+    <%= f.text_field :threshold_power, :class => 'threshold_power' %> watts<br />
+
+    <%= f.submit "Let's get started" %>
+  <% end %>  
+</div>
