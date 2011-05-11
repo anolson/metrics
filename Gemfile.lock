@@ -87,6 +87,7 @@ PLATFORMS
 
 DEPENDENCIES
   joule
+  mocha
   rails (= 3.0.7)
   sqlite3
   strava-api!

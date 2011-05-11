@@ -9,10 +9,12 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user] = @user.id
-      permalink_path(@user.username)
+      redirect_to permalink_path(@user.username)
     else
       render :action => "new"
     end
+  rescue StravaApi::AuthenticationError => e
+    redirect_to new_user_path, :alert => 'Invalid email or password.'
   end
   
   def show

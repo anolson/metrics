@@ -7,5 +7,9 @@
     <%= f.password_field :password %><br />
     
     <%= f.submit "Login" %>
-  <% end %>  
+  <% end %>
+  
+  <p id="flash" class="alert">
+    <%= flash[:alert] %>
+  </p>
 </div>
