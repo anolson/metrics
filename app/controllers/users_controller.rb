@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user] = @user.id
-      redirect_to permalink_path(@user.username)
+      redirect_to users_rides_path(@user.username)
     else
       render :action => "new"
     end
@@ -17,12 +17,4 @@ class UsersController < ApplicationController
     redirect_to new_user_path, :alert => 'Invalid email or password.'
   end
   
-  def show
-    if(params[:id])
-      @user = User.find(params[:id])
-    else
-      @user = User.where(:username => params[:username]).first
-    end
-    
-  end
 end

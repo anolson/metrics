@@ -5,7 +5,7 @@ class SessionController < ApplicationController
   def create
     user = User.authenticate(params[:user])      
     session[:user] = user.id
-    redirect_to permalink_path(user.username)
+    redirect_to users_rides_path(user.username)
   rescue StravaApi::AuthenticationError => e
     redirect_to new_session_path, :alert => 'Invalid email or password.'
   end

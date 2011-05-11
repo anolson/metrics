@@ -1,14 +1,19 @@
 Metrics::Application.routes.draw do
   resources :rides, :only => :show
   resource :session, :only => [:new, :create, :destroy], :controller => :session
-  resources :users, :only => [:new, :create, :show]
+  resources :users, :only => [:new, :create]
+  
+  namespace :users, :path => "/:username" do
+    resources :rides, :only => [:index, :show]
+  end
+  
     
   match "get_started" => 'users#new'
   match "login" => 'session#new'
   match "logout" => 'session#destroy'
 
-
-  match '/:username' => 'users#show', :as => :permalink
+  match "/:username" => redirect("/%{username}/rides")
+  
   root :to => "site#index"
   
   
