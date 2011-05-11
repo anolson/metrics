@@ -8,7 +8,7 @@ Metrics::Application.routes.draw do
   match "logout" => 'session#destroy'
 
 
-  match '/:username' => 'users#show'
+  match '/:username' => 'users#show', :as => :permalink
   root :to => "site#index"
   
   

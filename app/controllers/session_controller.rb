@@ -5,9 +5,9 @@ class SessionController < ApplicationController
   def create
     user = User.authenticate(params[:user])      
     session[:user] = user.id
-    redirect_to(user)
-  # rescue
-  #   redirect_to signin_path, :notice => 'Invalid email or password.'
+    permalink_path(@user.username)
+  rescue
+    redirect_to signin_path, :notice => 'Invalid email or password.'
   end
   
   def destroy

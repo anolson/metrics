@@ -9,7 +9,7 @@ class UsersController < ApplicationController
 
     if @user.save
       session[:user] = @user.id
-      redirect_to(@user)
+      permalink_path(@user.username)
     else
       render :action => "new"
     end
