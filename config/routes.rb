@@ -1,8 +1,12 @@
 Metrics::Application.routes.draw do
   resources :rides, :only => :show
+  resource :session, :only => [:new, :create, :destroy], :controller => :session
   resources :users, :only => [:new, :create, :show]
     
   match "get_started" => 'users#new'
+  match "login" => 'session#new'
+  match "logout" => 'session#destroy'
+
 
   match '/:username' => 'users#show'
   root :to => "site#index"

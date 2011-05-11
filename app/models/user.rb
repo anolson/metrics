@@ -8,8 +8,8 @@ class User < ActiveRecord::Base
   attr_accessor :email, :password
   
   def self.authenticate(options = {})
-    strava_user = authenticate_with_strava(option[:email], options[:password])
-    User.find_by_athlete_id(strava_user.athlete_id)
+    strava_user = authenticate_with_strava(options[:email], options[:password])
+    User.find_by_strava_athlete_id(strava_user.athlete_id)
   end
   
   def create_user_from_strava()
@@ -18,7 +18,11 @@ class User < ActiveRecord::Base
     self.strava_athlete_id = strava_user.athlete_id
     self.strava_api_token = strava_user.token  
   end
-  
+
+  def self.authenticate_with_strava(email, password)
+    User.new.strava_api.login(email, password)
+  end
+
   def authenticate_with_strava(email, password)
     strava_api.login(email, password)
   end

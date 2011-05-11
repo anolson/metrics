@@ -1,0 +1,11 @@
+<div id="user" class="dark_grey">
+  <%= form_for :user, :url => session_path do |f| %>
+    <%= f.label :email  %>
+    <%= f.text_field :email %><br />
+
+    <%= f.label :password %>
+    <%= f.password_field :password %><br />
+    
+    <%= f.submit "Login" %>
+  <% end %>  
+</div>
