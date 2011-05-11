@@ -34,3 +34,5 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 #user label {display:block; padding:5px 0; color:#EEE;}
 #user input {margin:0 0 15px 0; padding:5px; font-size:14px;}
 #user input.threshold_power {width:28px;}
+
+#flash.alert {text-align:center;}

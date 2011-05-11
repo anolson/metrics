@@ -4,7 +4,6 @@
     <h3><%= @ride.name %></h3>
     <div id="date" class="left"><%= format_datetime @ride.date.utc %></div>
     <%= link_to "View on Strava", "http://app.strava.com/rides/#{@ride.strava_ride_id}", :class => 'right' %>
-    <a href="strava" class="right"></a>
     <div class="clear"></div>
   </div>
   <%= render :partial => 'metrics' %>
