@@ -42,3 +42,6 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 #header #nav {margin:15px 0;}
 #header a{color:#EEE; font-size:15px; text-decoration:none; padding:5px; background:#5E5E5E; border-radius:5px;}
 #header a:hover{background:#7E7E7E;}
+
+#rides #ride:hover{background:#6E6E6E;}
+#rides #ride a {height:48px; width:48px;}

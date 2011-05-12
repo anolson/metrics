@@ -1,7 +1,7 @@
-<div id="ride" class="collection">
-  <div id="title" class="dark_grey">
+<div id="ride" class="collection dark_grey">
+  <div id="title" class="left">
     <h3><%= ride.name %></h3>
-    
-    <%= link_to "Metrics", users_ride_path(@user.username, ride.id) %>
   </div>
+  <%= link_to image_tag("arrow.png"), users_ride_path(@user.username, ride.id), :class => 'right' %>
+  <div class="clear"></div>
 </div>
