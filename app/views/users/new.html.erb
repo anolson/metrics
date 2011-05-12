@@ -12,7 +12,6 @@
     <%= f.submit "Let's get started" %>
   <% end %>  
 
-  <p id="flash" class="alert">
-    <%= flash[:alert] %>
-  </p>
+  <%= render :partial => 'common/alert' %>
+
 </div>

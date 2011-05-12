@@ -9,7 +9,5 @@
     <%= f.submit "Login" %>
   <% end %>
   
-  <p id="flash" class="alert">
-    <%= flash[:alert] %>
-  </p>
+  <%= render :partial => 'common/alert' %>
 </div>
