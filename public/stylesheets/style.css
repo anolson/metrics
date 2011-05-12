@@ -1,24 +1,39 @@
 body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif;}
 
-
 #content{width:460px; margin:0px auto;}
+
+#flash.alert {text-align:center;}
+
 #footer{padding:0 10px; font-size:80%;}
 #footer a{color:#EEE; font-size:90%; text-decoration:none;}
 
+#header {padding:0 10px;}
+#header h1 {margin:5px 0;}
+#header h1 a {color: #222;  text-shadow:0 0 1px #555; text-decoration:none;}
+#header #nav {margin:15px 0;}
+#header #nav a{color:#EEE; font-size:15px; text-decoration:none; padding:5px; background:#5E5E5E; border-radius:5px;}
+#header #nav a:hover{background:#7E7E7E;}
+
 #intro h1 {font-size:300%;}
-#intro a {color:#DDD; text-decoration:none}
+#intro a {color:#DDD;}
 #intro .get_started {text-align:center;}
 
 #metrics{ text-shadow:0 1px 0 #EEE; padding:10px;}
-
-#metrics #nav{}
-#metrics #nav{text-shadow:none; padding:0 10px;}
+#metrics #nav {text-shadow:none; padding:0 10px;}
 #metrics #nav a{color:#EEE; font-size:80%;}
+
+#rides #ride:hover{background:#6E6E6E;}
+#rides #ride a {height:48px; width:48px;}
 
 #title {color:#DDD;}
 #title h3{text-shadow:0 -1px 0 #222; font-weight:normal; margin:0 0 5px 0;}
 #title #date {color:#BBB; font-size:80%;}
 #title a {color:#EEE; font-size:80%;}
+
+#user label {display:block; padding:5px 0; color:#EEE;}
+#user input {margin:0 0 15px 0; padding:5px; font-size:14px;}
+#user input.threshold_power {width:30px;}
+#user .watts {color:#BBB;}
 
 .left{float:left;}
 .right{float:right;}
@@ -28,24 +43,6 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 .metric span{padding:10px; display:block; font-size:175%; color:#4E688B;}
 .metric label{display:block;font-size:80%; color:#333;}
 
-
 .dark_grey{background:#444; border-radius:5px; padding:10px; margin:10px;}
 .light_grey{background:-moz-linear-gradient(100% 75% 90deg,#AAA,#DDD);background:-webkit-gradient(linear,0% 0%,0% 75%,from(#DDD),to(#999)); border-radius:5px; padding:10px; margin:10px; }
-
 .submit { font-size:12px !important;}
-
-#user label {display:block; padding:5px 0; color:#EEE;}
-#user input {margin:0 0 15px 0; padding:5px; font-size:14px;}
-#user input.threshold_power {width:30px;}
-#user .watts {color:#BBB;}
-
-#flash.alert {text-align:center;}
-
-#header {padding:0 10px;}
-#header h1 {margin:5px 0; text-shadow:0 0 1px #555;}
-#header #nav {margin:15px 0;}
-#header a{color:#EEE; font-size:15px; text-decoration:none; padding:5px; background:#5E5E5E; border-radius:5px;}
-#header a:hover{background:#7E7E7E;}
-
-#rides #ride:hover{background:#6E6E6E;}
-#rides #ride a {height:48px; width:48px;}
