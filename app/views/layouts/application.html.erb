@@ -8,7 +8,11 @@
   </head>
   <body>
     <div id="content">
+      <%= render :partial => 'common/header' %>
+      
       <%= yield %>
+      
+      <%= render :partial => 'common/footer' %>
     </div>
   </body>
 </html>

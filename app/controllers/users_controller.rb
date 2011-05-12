@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_filter :verify_user_authentication, :only => [:new, :create]
+
   def new
     @user = User.new
   end
@@ -8,8 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     if @user.save
-      session[:user] = @user.id
-      redirect_to users_rides_path(@user.username)
+      setup_session(@user)
     else
       render :action => "new"
     end

@@ -1,11 +1,12 @@
 class SessionController < ApplicationController
   
+  skip_filter :verify_user_authentication, :only => [:new, :create]
+  
   def new; end
   
   def create
     user = User.authenticate(params[:user])      
-    session[:user] = user.id
-    redirect_to users_rides_path(user.username)
+    setup_session(user)
   rescue StravaApi::AuthenticationError => e
     redirect_to new_session_path, :alert => 'Invalid email or password.'
   end
