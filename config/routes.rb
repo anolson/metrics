@@ -1,6 +1,7 @@
 Metrics::Application.routes.draw do
   resources :rides, :only => :show
-  resource :session, :only => [:new, :create, :destroy], :controller => :session
+  
+  resource :session, :only => [:new, :create, :destroy], :controller => :session 
   resources :users, :only => [:new, :create]
   
   namespace :users, :path => "/:username" do
@@ -8,8 +9,8 @@ Metrics::Application.routes.draw do
   end
   
     
-  match "get_started" => 'users#new'
-  match "login" => 'session#new'
+  match "get_started" => 'users#new', :constraints => { :protocol => Rails.env.production? ? 'https' : 'http'}
+  match "login" => 'session#new', :constraints => { :protocol => Rails.env.production? ? 'https' : 'http'}
   match "logout" => 'session#destroy'
 
   match "/:username" => redirect("/%{username}/rides")
