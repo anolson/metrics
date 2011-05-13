@@ -20,9 +20,10 @@ class Ride < ActiveRecord::Base
   #   return ride
   # end
   
-  def sync(threshold_power = 0)
+  def sync(user)
     fetch_ride
-    calculate_metrics(threshold_power)
+    calculate_metrics(user.threshold_power)
+    self.user = user
     save
   end
   

@@ -19,13 +19,13 @@ ActiveRecord::Schema.define(:version => 20110429023832) do
     t.float    "normalized_power",      :default => 0.0
     t.float    "training_stress_score", :default => 0.0
     t.float    "intensity_factor",      :default => 0.0
-    t.integer  "person_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|
-    t.string   "strava_athlete_id"
+    t.integer  "strava_athlete_id"
     t.string   "strava_api_token"
     t.string   "username"
     t.integer  "threshold_power"

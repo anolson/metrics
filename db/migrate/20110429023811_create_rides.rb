@@ -7,7 +7,7 @@ class CreateRides < ActiveRecord::Migration
       t.float   :normalized_power,      :default => 0.0
       t.float   :training_stress_score, :default => 0.0
       t.float   :intensity_factor,      :default => 0.0
-      t.integer :person_id
+      t.integer :user_id
       t.timestamps
     end
   end
