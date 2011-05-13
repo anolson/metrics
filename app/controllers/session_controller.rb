@@ -7,11 +7,13 @@ class SessionController < ApplicationController
   def create
     user = User.authenticate(params[:user])      
     setup_session(user)
+    cookies.permanent.signed[:remember_me] = user.id if params[:remember_me]
   rescue StravaApi::AuthenticationError => e
     redirect_to new_session_path, :alert => 'Invalid email or password.'
   end
   
   def destroy
+    cookies.delete :remember_me
     reset_session
     redirect_to root_path
   end

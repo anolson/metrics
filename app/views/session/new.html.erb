@@ -6,6 +6,9 @@
     <%= f.label :password %>
     <%= f.password_field :password %><br />
     
+    <%= check_box_tag :remember_me %>
+    <span class="remember_me">Remember me</span><br />
+
     <%= f.submit "Login", :class => 'submit' %>
   <% end %>
   
