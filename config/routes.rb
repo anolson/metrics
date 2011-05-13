@@ -3,15 +3,14 @@ Metrics::Application.routes.draw do
   
   resource :session, :only => [:new, :create, :destroy], :controller => :session 
   resources :users, :only => [:new, :create]
-  
-  namespace :users, :path => "/:username" do
-    resources :rides, :only => [:index, :show]
-  end
-  
     
   match "get_started" => 'users#new', :constraints => { :protocol => Rails.env.production? ? 'https' : 'http'}
   match "login" => 'session#new', :constraints => { :protocol => Rails.env.production? ? 'https' : 'http'}
   match "logout" => 'session#destroy'
+
+  namespace :users, :path => "/:username" do
+    resources :rides, :only => [:index, :show]
+  end
 
   match "/:username" => redirect("/%{username}/rides")
   
