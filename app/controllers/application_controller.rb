@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
     end
   
     def find_current_user
-      @current_user ||= User.where(session[:user]).first if has_authenticated?
+      @current_user ||= User.find(session[:user]) if has_authenticated?
     end
 
 end
