@@ -14,6 +14,9 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 #header #nav a{color:#EEE; font-size:15px; text-decoration:none; padding:5px; background:#5E5E5E; border-radius:5px;}
 #header #nav a:hover{background:#7E7E7E;}
 
+#instructions {color:#9DF; font-size:90%; text-align:center;}
+#instructions .note {color:#BBB; font-size:80%;}
+
 #intro h1 {font-size:300%;}
 #intro a {color:#DDD;}
 #intro .get_started {text-align:center;}
