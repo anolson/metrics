@@ -1,7 +1,7 @@
 class CreateUsers < ActiveRecord::Migration
   def self.up
     create_table :users do |t|
-      t.string :strava_athlete_id
+      t.integer :strava_athlete_id
       t.string :strava_api_token
       t.string :username
       t.integer :threshold_power
