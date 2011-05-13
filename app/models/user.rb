@@ -28,7 +28,9 @@ class User < ActiveRecord::Base
   end
   
   def strava_rides
-    strava_api.rides(:athlete_id => self.strava_athlete_id)
+    strava_api.rides(:athlete_id => self.strava_athlete_id).collect { |ride|
+      Ride.new(:name => ride.name, :strava_ride_id => ride.id, :user => self)
+    }
   end
   
   def strava_api
