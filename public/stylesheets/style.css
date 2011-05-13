@@ -23,7 +23,7 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 #metrics #nav a{color:#EEE; font-size:80%;}
 
 #rides #ride:hover{background:#6E6E6E;}
-#rides #ride a {height:48px; width:48px;}
+#rides #ride a {height:32px; width:32px; padding:6px;}
 
 #title {color:#DDD;}
 #title h3{text-shadow:0 -1px 0 #222; font-weight:normal; margin:0 0 5px 0;}
