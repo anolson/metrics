@@ -4,11 +4,11 @@ module ApplicationHelper
     if has_authenticated?
       link_to "Logout", logout_url
     else
-      link_to "Login", login_url(:protocol => protocol_for_environement)
+      link_to "Login", login_url(:protocol => protocol_for_environment)
     end
   end
 
-  def protocol_for_environement
+  def protocol_for_environment
     Rails.env.production? ? 'https' : 'http'
   end
   
