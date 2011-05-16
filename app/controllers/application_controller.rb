@@ -2,11 +2,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   before_filter :verify_user_authentication
-  before_filter :find_current_user
+  before_filter :current_user
   
   private 
     def verify_user_authentication
-      remember_user
       unless has_authenticated?
         session[:return_to] = request.fullpath
         redirect_to login_path
@@ -32,7 +31,8 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
   
-    def find_current_user
+    def current_user
+      remember_user
       @current_user ||= User.find(session[:user]) if has_authenticated?
     end
 
