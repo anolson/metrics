@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(:version => 20110429023832) do
     t.float    "training_stress_score", :default => 0.0
     t.float    "intensity_factor",      :default => 0.0
     t.integer  "user_id"
+    t.boolean  "synced",                :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

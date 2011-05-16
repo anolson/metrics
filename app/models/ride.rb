@@ -1,29 +1,17 @@
 class Ride < ActiveRecord::Base
   belongs_to :user
   
-  attr_accessor :watts
-  
+  attr_accessor :watts, :seconds
+
   def initialize(options = {})
     super options
     @watts = []
   end
   
-  # def self.find_by_strava_ride_id(strava_ride_id, sync = true)
-  #   ride = super(strava_ride_id)
-  #   
-  #   if(ride.nil? && sync)
-  #     ride = Ride.new :strava_ride_id => strava_ride_id
-  #     ride.sync(320)
-  #     ride.save
-  #   end
-  #   
-  #   return ride
-  # end
-  
-  def sync(user)
+  def sync
     fetch_ride
-    calculate_metrics(user.threshold_power)
-    self.user = user
+    calculate_metrics(self.user.threshold_power)
+    self.synced = true
     save
   end
   
@@ -34,7 +22,7 @@ class Ride < ActiveRecord::Base
   end
   
   def record_interval
-    1
+    calculate_record_interval
   end
   
   def duration_seconds
@@ -58,6 +46,12 @@ class Ride < ActiveRecord::Base
       write_attribute(:intensity_factor, intensity_factor)
     end
   
+    def calculate_record_interval
+      times = []
+      @seconds[1..30].each_slice(2) {|s| times << (s[1] - s[0]) }
+      times.average.round
+    end
+
     def fetch_ride
       fetch_ride_summary
       fetch_ride_streams  
@@ -74,6 +68,7 @@ class Ride < ActiveRecord::Base
       streams = strava_api.ride_streams(self.strava_ride_id.to_i)
       
       unless(streams.watts.empty?)
+        @seconds = streams.time
         @watts = streams.watts.collect { |item| item.nil? && 0 || item }
       end
     end
@@ -81,7 +76,5 @@ class Ride < ActiveRecord::Base
     def strava_api
       @strava_api ||= StravaApi::Base.new
     end
-    
-
-  
+      
 end
