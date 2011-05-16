@@ -2,6 +2,8 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 
 #content{width:460px; margin:0px auto;}
 
+#errors {list-style-type:none; text-align:center;}
+
 #flash.alert {text-align:center;}
 
 #footer{padding:0 10px; font-size:80%;}

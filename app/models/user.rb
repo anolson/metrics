@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_many :rides
   
+  validates_presence_of :email, :password, :threshold_power
   validates_uniqueness_of :strava_athlete_id, :username
   
   before_validation :create_user_from_strava 
