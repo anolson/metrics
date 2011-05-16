@@ -8,6 +8,7 @@ class CreateRides < ActiveRecord::Migration
       t.float   :training_stress_score, :default => 0.0
       t.float   :intensity_factor,      :default => 0.0
       t.integer :user_id
+      t.boolean :synced,                :default => false
       t.timestamps
     end
   end

@@ -8,22 +8,10 @@ class Ride < ActiveRecord::Base
     @watts = []
   end
   
-  # def self.find_by_strava_ride_id(strava_ride_id, sync = true)
-  #   ride = super(strava_ride_id)
-  #   
-  #   if(ride.nil? && sync)
-  #     ride = Ride.new :strava_ride_id => strava_ride_id
-  #     ride.sync(320)
-  #     ride.save
-  #   end
-  #   
-  #   return ride
-  # end
-  
-  def sync(user)
+  def sync
     fetch_ride
-    calculate_metrics(user.threshold_power)
-    self.user = user
+    calculate_metrics(self.user.threshold_power)
+    self.synced = true
     save
   end
   
