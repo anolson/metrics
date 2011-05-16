@@ -2,6 +2,7 @@
   <div id="title" class="left">
     <h3><%= ride.name %></h3>
   </div>
-  <%= link_to image_tag("arrow.png", :size => "32x32"), users_ride_path(@current_user.username, ride.strava_ride_id), :class => 'right' %>
+  <%= image_tag("arrow.png", :size => "32x32", :class => 'right') %>
+  <%= link_to "", users_ride_path(@current_user.username, ride.strava_ride_id) %>
   <div class="clear"></div>
 </div>
