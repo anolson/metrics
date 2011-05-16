@@ -27,9 +27,9 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 
 #rides #ride.dark_grey {padding:0;}
 #rides #ride:hover{background:#6E6E6E;}
-#rides #ride h3 {margin:10px;}
-#rides #ride img {margin:20px 10px;}
-#rides #ride a {display:block; width:420px; height:52px; padding:10px; z-index:1;}
+#rides #ride h3 {margin:10px; z-index:1;}
+#rides #ride img {margin:20px 10px; z-index:1;}
+#rides #ride a {display:block; width:420px; height:52px; padding:10px; z-index:2; position:relative;}
 
 #title {color:#DDD;}
 #title h3{text-shadow:0 -1px 0 #222; font-weight:normal; margin:0 0 5px 0;}
