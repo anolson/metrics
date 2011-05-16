@@ -31,6 +31,10 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 #rides #ride img {margin:20px 10px; z-index:1;}
 #rides #ride a {display:block; width:420px; height:52px; padding:10px; z-index:2; position:relative;}
 
+#rides #summary { font-size:12px; padding:5px 10px; color:#BBB;}
+#rides #summary span { color:#EEE;}
+
+
 #title {color:#DDD;}
 #title h3{text-shadow:0 -1px 0 #222; font-weight:normal; margin:0 0 5px 0;}
 #title #date {color:#BBB; font-size:80%;}
@@ -48,6 +52,8 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 .metric{text-align:center;}
 .metric span{padding:10px; display:block; font-size:175%; color:#4E688B;}
 .metric label{display:block;font-size:80%; color:#333;}
+
+.seperator{padding:0 2px;}
 
 .dark_grey{background:#444; border-radius:5px; padding:10px; margin:10px;}
 .light_grey{background:-moz-linear-gradient(100% 75% 90deg,#AAA,#DDD);background:-webkit-gradient(linear,0% 0%,0% 75%,from(#DDD),to(#999)); border-radius:5px; padding:10px; margin:10px; }
