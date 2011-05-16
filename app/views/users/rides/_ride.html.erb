@@ -1,7 +1,16 @@
 <div id="ride" class="collection dark_grey">
   <div id="title" class="left">
     <h3><%= ride.name %></h3>
+
+    <%if ride.synced? %>
+      <div id="summary">
+        <strong>NP</strong> <span><%= ride.normalized_power.round %></span> <span class="separator">&nbsp;</span>
+        <strong>TSS</strong> <span><%= ride.training_stress_score.round %></span> <span class="separator">&nbsp;</span>
+        <strong>IF</strong> <span><%= ride.intensity_factor.round(2) %></span>
+      </div>
+    <% end %>
   </div>
+
   <%= image_tag("arrow.png", :size => "32x32", :class => 'right') %>
   <%= link_to "", users_ride_path(@current_user.username, ride.strava_ride_id) %>
   <div class="clear"></div>
