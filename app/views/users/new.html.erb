@@ -9,8 +9,11 @@
     <%= f.label :threshold_power %>
     <%= f.text_field :threshold_power, :class => 'threshold_power' %> <span class="watts">W</span><br />
 
-    <%= f.submit "Let's get started", :class => 'submit' %>
-  <% end %>  
+    <div id="submit">
+      <%= f.submit "Let's get started" %>
+    </div>
+
+  <% end %>
 
   <% if @user.errors.any? %>
     <ul id="errors">

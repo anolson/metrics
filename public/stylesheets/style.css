@@ -47,6 +47,9 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 #user input.threshold_power {width:30px;}
 #user .watts {color:#BBB;}
 
+#submit input {font-size:12px !important;}
+#submit a {color:#EEE; font-size:14px }
+
 .left{float:left;}
 .right{float:right;}
 .clear{clear:both;}
@@ -59,6 +62,6 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 
 .dark_grey{background:#444; border-radius:5px; padding:10px; margin:10px;}
 .light_grey{background:-moz-linear-gradient(100% 75% 90deg,#AAA,#DDD);background:-webkit-gradient(linear,0% 0%,0% 75%,from(#DDD),to(#999)); border-radius:5px; padding:10px; margin:10px; }
-.submit { font-size:12px !important;}
+
 
 .remember_me {font-size:14px; color:#EEE;}

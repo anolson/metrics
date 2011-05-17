@@ -5,13 +5,17 @@
 
     <%= f.label :password %>
     <%= f.password_field :password %><br />
-    
+
     <%= check_box_tag :remember_me %>
     <span class="remember_me">Remember me</span><br />
 
-    <%= f.submit "Login", :class => 'submit' %>
+    <div id="submit">
+      <%= f.submit "Login", :class => 'left' %>
+      <%= link_to "Getting started is easy.", get_started_path, :class => 'right' %>
+      <div class="clear"></div>
+    </div>
   <% end %>
-  
+
   <%= render :partial => 'common/alert' %>
 </div>
 
