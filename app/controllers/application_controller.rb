@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
     end
   
     def redirect_to_intended_path(user)
-      session[:return_to] ? redirect_to(session[:return_to]) : redirect_to(users_rides_path(user.username))
+      session[:return_to] ? redirect_to(session[:return_to]) : redirect_to(root_path)
       session[:return_to] = nil
     end
   

@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_many :rides
   
   validates_presence_of :email, :password, :threshold_power
-  validates_uniqueness_of :strava_athlete_id, :username
+  validates_uniqueness_of :strava_athlete_id
   
   before_validation :create_user_from_strava 
   
@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   
   def create_user_from_strava()
     strava_user = authenticate_with_strava(@email, @password)
-    self.username = @email.split('@').first
     self.strava_athlete_id = strava_user.athlete_id
     self.strava_api_token = strava_user.token  
   end

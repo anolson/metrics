@@ -3,7 +3,6 @@ class CreateUsers < ActiveRecord::Migration
     create_table :users do |t|
       t.integer :strava_athlete_id
       t.string :strava_api_token
-      t.string :username
       t.integer :threshold_power
       t.timestamps
     end

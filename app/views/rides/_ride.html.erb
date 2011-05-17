@@ -12,6 +12,6 @@
   </div>
 
   <%= image_tag("arrow.png", :size => "32x32", :class => 'right') %>
-  <%= link_to "", users_ride_path(@current_user.username, ride.strava_ride_id) %>
+  <%= link_to "", ride_path(ride.strava_ride_id) %>
   <div class="clear"></div>
 </div>

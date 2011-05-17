@@ -28,7 +28,6 @@ ActiveRecord::Schema.define(:version => 20110429023832) do
   create_table "users", :force => true do |t|
     t.integer  "strava_athlete_id"
     t.string   "strava_api_token"
-    t.string   "username"
     t.integer  "threshold_power"
     t.datetime "created_at"
     t.datetime "updated_at"
