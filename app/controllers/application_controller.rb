@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  before_filter :remember_user
   before_filter :verify_user_authentication
 
   helper_method :has_authenticated?
@@ -15,7 +16,6 @@ class ApplicationController < ActionController::Base
     end
 
     def current_user
-      remember_user
       @current_user ||= User.find(session[:user]) if has_authenticated?
     end
 
