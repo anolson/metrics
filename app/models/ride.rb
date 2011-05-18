@@ -3,8 +3,8 @@ class Ride < ActiveRecord::Base
   
   attr_accessor :watts, :seconds
 
-  def initialize(options = {})
-    super options
+  def initialize(option = {})
+    super(options)
     @watts = []
   end
   
@@ -53,6 +53,7 @@ class Ride < ActiveRecord::Base
     end
 
     def fetch_ride
+      @watts = []
       fetch_ride_summary
       fetch_ride_streams  
     end
@@ -67,10 +68,8 @@ class Ride < ActiveRecord::Base
     def fetch_ride_streams
       streams = strava_api.ride_streams(self.strava_ride_id.to_i)
       
-      unless(streams.watts.empty?)
-        @seconds = streams.time
-        @watts = streams.watts.collect { |item| item.nil? && 0 || item }
-      end
+      @seconds = streams.time
+      @watts = streams.watts.collect { |item| item.nil? && 0 || item } unless (streams.watts.nil?)
     end
     
     def strava_api
