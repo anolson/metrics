@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       render :action => "new"
     end
   rescue StravaApi::AuthenticationError => e
-    redirect_to new_user_path, :alert => 'Invalid email or password.'
+    redirect_to new_users_path, :alert => 'Invalid email or password.'
   end
-  
+
 end
