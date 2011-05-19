@@ -22,7 +22,7 @@ class Ride < ActiveRecord::Base
   end
 
   def record_interval
-    calculate_record_interval
+    1
   end
 
   def duration_seconds
