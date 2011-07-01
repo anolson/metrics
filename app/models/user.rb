@@ -26,17 +26,19 @@ class User < ActiveRecord::Base
   def authenticate_with_strava(email, password)
     strava_api.login(email, password)
   end
-  
-  def strava_rides
-    fetch_rides_from_strava.collect { |ride|
+
+  def strava_rides(offset = 0)
+    p offset
+    fetch_rides_from_strava(offset).collect { |ride|
       Ride.find_or_create_by_strava_ride_id(:strava_ride_id => ride.id, :name => ride.name, :user => self)
     }
   end
-  
-  def fetch_rides_from_strava
-    strava_api.rides(:athlete_id => self.strava_athlete_id)
+
+  def fetch_rides_from_strava(offset)
+    offset = 0 if(offset.nil?)
+    strava_api.rides(:athlete_id => self.strava_athlete_id, :start_id => 0, :offset => offset * 50)
   end
-  
+
   def strava_api
     @strava_api ||= StravaApi::Base.new
   end

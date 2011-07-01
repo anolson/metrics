@@ -1,0 +1,7 @@
+$("rides").insert({
+  bottom: "<%= escape_javascript(render(:partial => @rides)) %>"
+})
+$("loading").hide();
+<%= escape_javascript("checkScroll();") unless @rides.empty? %>
+
+

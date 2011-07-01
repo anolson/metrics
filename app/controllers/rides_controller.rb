@@ -1,11 +1,11 @@
 class RidesController < ApplicationController
   skip_before_filter :verify_user_authentication, :only => 'index'
-    
-  respond_to :html, :json
-  
+
+  respond_to :js, :html, :json
+
   def index
     if has_authenticated?
-      respond_with(@rides = current_user.strava_rides)
+      respond_with(@rides = current_user.strava_rides(params[:page].to_i))
     else
       render :template => "site/index"
     end

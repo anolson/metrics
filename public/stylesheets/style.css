@@ -23,6 +23,8 @@ body{background:#333; color:#222;  font-family:"Helvetica Neue",Arial,sans-serif
 #intro a {color:#DDD;}
 #intro .get_started {text-align:center;}
 
+#loading {color:#EEE; text-align:center;}
+
 #metrics{ text-shadow:0 1px 0 #EEE; padding:10px;}
 #metrics #nav {text-shadow:none; padding:0 10px;}
 #metrics #nav a{color:#EEE; font-size:80%;}
