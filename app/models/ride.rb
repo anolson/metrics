@@ -3,10 +3,10 @@ class Ride < ActiveRecord::Base
 
   attr_accessor :watts, :seconds
 
-  def initialize(options = {})
-    super(options)
-    @watts = []
-  end
+  # def initialize(options = {})
+  #   super(options)
+  #   @watts = []
+  # end
 
   def sync
     fetch_ride
