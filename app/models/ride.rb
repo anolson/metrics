@@ -7,7 +7,7 @@ class Ride < ActiveRecord::Base
   def sync_ride
     unless synced?
       fetch_ride
-      calculate_metrics(self.user.threshold_power)
+      calculate_metrics
       update_attributes(:synced => true)
     end
   end
@@ -21,11 +21,11 @@ class Ride < ActiveRecord::Base
   end
 
   private
-    def calculate_metrics(threshold_power = 0)
+    def calculate_metrics
       @watts = [] if @watts.nil?
       calculate_normalized_power
-      calculate_training_stress_score(threshold_power)
-      calculate_intensity_factor(threshold_power)
+      calculate_training_stress_score
+      calculate_intensity_factor
     end
 
     def calculate_normalized_power
@@ -33,13 +33,13 @@ class Ride < ActiveRecord::Base
       write_attribute(:normalized_power, np)
     end
 
-    def calculate_training_stress_score(threshold_power)
-      tss = Joule::Calculator::PowerCalculator.training_stress_score(duration_seconds, self.normalized_power, threshold_power)
+    def calculate_training_stress_score
+      tss = Joule::Calculator::PowerCalculator.training_stress_score(duration_seconds, self.normalized_power, self.user.threshold_power)
       write_attribute(:training_stress_score, tss)
     end
 
-    def calculate_intensity_factor(threshold_power)
-      intensity_factor = Joule::Calculator::PowerCalculator.intensity_factor(self.normalized_power, threshold_power)
+    def calculate_intensity_factor
+      intensity_factor = Joule::Calculator::PowerCalculator.intensity_factor(self.normalized_power, self.user.threshold_power)
       write_attribute(:intensity_factor, intensity_factor)
     end
 
