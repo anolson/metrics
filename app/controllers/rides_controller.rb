@@ -13,7 +13,6 @@ class RidesController < ApplicationController
   
   def show
     @ride = Ride.find_or_create_by_strava_ride_id(:strava_ride_id => params[:id], :user => current_user)
-    # @ride.sync() unless @ride.synced
     respond_with(@ride)
   end
   

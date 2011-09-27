@@ -21,5 +21,5 @@ gem 'strava-api', :git => 'git://github.com/anolson/strava-api.git'
 gem 'joule'
 
 group :development, :test do
-  gem 'mocha'
+  gem 'mocha', :require => nil
 end
