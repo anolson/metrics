@@ -29,10 +29,9 @@ class RideTest < ActiveSupport::TestCase
     assert_equal 90.3, ride.training_stress_score
     assert_equal 0.8, ride.intensity_factor
   end
-
+  
   test "calculate metrics for a ride without any power values" do 
-    ride = Ride.new
-    ride.calculate_metrics(320)
+    ride = Ride.create(:synced => true, :user => User.find(1))
     assert_equal 0.0, ride.normalized_power.round(2)
     assert_equal 0.0, ride.training_stress_score.round(2)
     assert_equal 0.0, ride.intensity_factor.round(1)
@@ -41,7 +40,7 @@ class RideTest < ActiveSupport::TestCase
   test "syncing a ride from strava" do 
     # ride = Ride.new :strava_ride_id => 486125
     # ride.sync(320)
-    ride = Ride.find_by_strava_ride_id(486125)
+    ride = Ride.find_or_create_by_strava_ride_id(:strava_ride_id => 486125, :user => User.find(1))
     assert_equal 288.46, ride.normalized_power.round(2)
     assert_equal 148.68, ride.training_stress_score.round(2)
     assert_equal 0.9, ride.intensity_factor.round(1)

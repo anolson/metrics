@@ -1,24 +1,15 @@
 class Ride < ActiveRecord::Base
+  after_create :sync_ride
   belongs_to :user
 
   attr_accessor :watts, :seconds
 
-  # def initialize(options = {})
-  #   super(options)
-  #   @watts = []
-  # end
-
-  def sync
-    fetch_ride
-    calculate_metrics(self.user.threshold_power)
-    self.synced = true
-    save
-  end
-
-  def calculate_metrics(threshold_power = 0)
-    calculate_normalized_power
-    calculate_training_stress_score(threshold_power)
-    calculate_intensity_factor(threshold_power)
+  def sync_ride
+    unless synced?
+      fetch_ride
+      calculate_metrics(self.user.threshold_power)
+      update_attributes(:synced => true)
+    end
   end
 
   def record_interval
@@ -30,6 +21,12 @@ class Ride < ActiveRecord::Base
   end
 
   private
+    def calculate_metrics(threshold_power = 0)
+      @watts = [] if @watts.nil?
+      calculate_normalized_power
+      calculate_training_stress_score(threshold_power)
+      calculate_intensity_factor(threshold_power)
+    end
 
     def calculate_normalized_power
       np = Joule::Calculator::PowerCalculator.normalized_power(watts, record_interval)
@@ -46,14 +43,7 @@ class Ride < ActiveRecord::Base
       write_attribute(:intensity_factor, intensity_factor)
     end
 
-    def calculate_record_interval
-      times = []
-      @seconds[1..30].each_slice(2) {|s| times << (s[1] - s[0]) }
-      times.average.round
-    end
-
     def fetch_ride
-      @watts = []
       fetch_ride_summary
       fetch_ride_streams
     end
@@ -75,5 +65,4 @@ class Ride < ActiveRecord::Base
     def strava_api
       @strava_api ||= StravaApi::Base.new
     end
-
 end
