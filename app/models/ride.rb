@@ -1,10 +1,10 @@
 class Ride < ActiveRecord::Base
-  after_create :sync_ride
+  # after_create :sync_ride
   belongs_to :user
 
   attr_accessor :watts, :seconds
 
-  def sync_ride
+  def sync
     unless synced?
       fetch_ride
       calculate_metrics

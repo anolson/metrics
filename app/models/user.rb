@@ -28,7 +28,6 @@ class User < ActiveRecord::Base
   end
 
   def strava_rides(offset = 0)
-    p offset
     fetch_rides_from_strava(offset).collect { |ride|
       Ride.find_or_create_by_strava_ride_id(:strava_ride_id => ride.id, :name => ride.name, :user => self)
     }
