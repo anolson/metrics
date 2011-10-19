@@ -23,3 +23,5 @@ gem 'joule'
 group :development, :test do
   gem 'mocha', :require => nil
 end
+
+gem 'thin'
